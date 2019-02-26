@@ -17,6 +17,6 @@ limitations under the License.
 */}}
 
 set -ex
-chroot /mnt/host-rootfs modprobe bridge
-chroot /mnt/host-rootfs modprobe ip6_tables
-chroot /mnt/host-rootfs modprobe ebtables
+for module in bridge ip6_tables ebtables br_netfilter; do
+  chroot /mnt/host-rootfs modprobe $module
+done

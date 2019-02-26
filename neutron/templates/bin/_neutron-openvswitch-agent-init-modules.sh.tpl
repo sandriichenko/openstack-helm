@@ -17,4 +17,6 @@ limitations under the License.
 */}}
 
 set -ex
-chroot /mnt/host-rootfs modprobe ip6_tables
+for module in ip6_tables br_netfilter; do
+  chroot /mnt/host-rootfs modprobe $module
+done
